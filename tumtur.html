@@ -99,7 +99,6 @@
       padding: 20px;
     }
 
-    /* "Ana Sayfaya Dön" Butonu */
     .back-to-home {
       display: inline-block;
       margin-top: 30px;
@@ -125,7 +124,6 @@
       margin-top: 60px;
     }
 
-    /* Keyframe Animations */
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -133,7 +131,6 @@
       }
     }
 
-    /* SIDEBAR (Mobile Version) */
     .sidebar {
       position: fixed;
       top: 0;
@@ -170,7 +167,6 @@
 </head>
 <body>
 
-<!-- SIDEBAR (Mobile) -->
 <div class="sidebar" id="sidebar">
   <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
   <a href="index.html">Anasayfa</a>
@@ -180,7 +176,6 @@
   <a href="#contact">İletişim</a>
 </div>
 
-<!-- HEADER -->
 <header class="header">
   <div class="overlay"></div>
   <div class="header-content">
@@ -189,7 +184,6 @@
   </div>
 </header>
 
-<!-- Turlar Section -->
 <section>
   <h2>Popüler Turlar</h2>
   <div class="cards">
@@ -217,19 +211,78 @@
       </div>
     </div>
 
-    <!-- More cards can be added similarly -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1590490359912-260f7c64c29d" alt="Pamukkale Turu">
+      <div class="card-content">
+        <h3>Pamukkale ve Hierapolis</h3>
+        <p>Beyaz travertenler üzerinde yürüyüş ve antik kenti keşif dolu bir gün sizi bekliyor.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1550152113-3f2595aa0e4c" alt="İstanbul Kültür Turu">
+      <div class="card-content">
+        <h3>İstanbul Kültür Turu</h3>
+        <p>Tarihi yarımada, Boğaz turu ve Osmanlı'dan izler ile kültürel bir yolculuk yapın.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1605620833931-09f1a9330b36" alt="Karadeniz Yayla Turu">
+      <div class="card-content">
+        <h3>Karadeniz Yayla Turu</h3>
+        <p>Uzungöl, Ayder ve yeşilin her tonunu barındıran yaylalarla dolu bir serüven.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1588345865036-66c4e7a5aa5c" alt="Efes Antik Kenti Turu">
+      <div class="card-content">
+        <h3>Efes Antik Kenti</h3>
+        <p>Roma döneminden kalma görkemli kalıntılarla tarihte bir yolculuk yapın.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1553268958-5f50a1c20d7e" alt="Likya Yolu Yürüyüşü">
+      <div class="card-content">
+        <h3>Likya Yolu Yürüyüşü</h3>
+        <p>Doğa, tarih ve Akdeniz manzaralarıyla dolu dünyaca ünlü bir trekking rotası.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1526139491730-0eeb264f7d32" alt="Göbeklitepe Turu">
+      <div class="card-content">
+        <h3>Göbeklitepe ve Şanlıurfa</h3>
+        <p>İnsanlık tarihinin en eski tapınağına tanıklık edin.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1603880092044-0d7b3dc23b63" alt="Nemrut Dağı Turu">
+      <div class="card-content">
+        <h3>Nemrut Dağı Gün Doğumu</h3>
+        <p>Kommagene Krallığı'nın devasa heykelleri arasında eşsiz bir gün doğumu izleyin.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1562338029-1817b5f57c06" alt="Bozcaada Turu">
+      <div class="card-content">
+        <h3>Bozcaada ve Şarap Tadımı</h3>
+        <p>Rüzgarlı tepeler, taş sokaklar ve lezzetli şaraplarla dolu bir ada kaçamağı.</p>
+      </div>
+    </div>
   </div>
 
-  <!-- "Ana Sayfaya Dön" Butonu -->
   <a href="turizmana.html" class="back-to-home">Ana Sayfaya Dön</a>
 </section>
 
-<!-- Footer -->
 <footer>
   <p>&copy; 2025 Hayal Turizm. Tüm hakları saklıdır.</p>
 </footer>
 
-<!-- Script to toggle sidebar (Mobile) -->
 <script>
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('show');
@@ -238,7 +291,7 @@
   window.onload = function() {
     setTimeout(function() {
       document.querySelector('.cards').classList.add('show');
-    }, 500); // Delayed animation for card section
+    }, 500);
   };
 </script>
 
