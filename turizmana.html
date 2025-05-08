@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayal Turizm</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      scroll-behavior: smooth;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px;
+      background-color: #1e1e2f;
+      color: white;
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .sidebar.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .sidebar h2 {
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+      width: 100%;
+      text-align: left;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #3e3e5e;
+      transform: translateX(10px);
+    }
+
+    .sidebar .social {
+      margin-top: auto;
+      padding-bottom: 20px;
+    }
+
+    .sidebar .social a {
+      margin: 0 5px;
+      color: white;
+      font-size: 1.3rem;
+      transition: color 0.3s;
+    }
+
+    .sidebar .social a:hover {
+      color: #ffd700;
+    }
+
+    /* PAGE CONTENT (OFFSET) */
+    .content {
+      margin-left: 220px;
+      width: calc(100% - 220px);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HEADER */
+    .header {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      margin: 0;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .header p {
+      font-size: 1.5rem;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .cta-button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #ffd700;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: #333;
+      text-decoration: none;
+      transition: transform 0.3s ease-out, background 0.3s ease-out;
+    }
+
+    .cta-button:hover {
+      background-color: #ffbb00;
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    #anasayfa h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s ease-out forwards;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      overflow: hidden;
+      transition: transform 0.3s ease-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .about,
+    .faq,
+    .contact {
+      background: white;
+      margin-top: 40px;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 60px;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar show">
+    <h2>🌍 Hayal</h2>
+    <a href="#anasayfa"><i class="fas fa-home"></i> Anasayfa</a>
+    <a href="#turlar"><i class="fas fa-map-marked-alt"></i> Turlar</a>
+    <a href="tumtur.html"><i class="fas fa-globe"></i> Tüm Turlar</a> <!-- YENİ EKLENDİ -->
+    <a href="#about"><i class="fas fa-users"></i> Hakkımızda</a>
+    <a href="#faq"><i class="fas fa-question-circle"></i> SSS</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> İletişim</a>
+    <div class="social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="content show">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="overlay"></div>
+      <div class="header-content">
+        <h1>Hayal Turizm</h1>
+        <p>Dünyayı birlikte keşfedelim!</p>
+        <a href="#anasayfa" class="cta-button">Şimdi Keşfet</a>
+      </div>
+    </header>
+
+    <!-- MAIN SECTIONS -->
+    <section id="anasayfa">
+      <h2>Popüler Turlar</h2>
+      <div class="cards" id="turlar">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Kapadokya">
+          <div class="card-content">
+            <h3>Kapadokya Balon Turu</h3>
+            <p>Gün doğumunda balonla gökyüzüne yükselin, unutulmaz bir deneyim yaşayın.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff" alt="Mavi Tur">
+          <div class="card-content">
+            <h3>Antalya Mavi Tur</h3>
+            <p>Akdeniz'in berrak sularında tekneyle huzura yelken açın.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f" alt="Doğu Ekspresi">
+          <div class="card-content">
+            <h3>Doğu Ekspresi</h3>
+            <p>Karlarla kaplı Anadolu'yu trenle keşfedin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about" id="about">
+        <h2>Hakkımızda</h2>
+        <p>Hayal Turizm, 2010 yılından bu yana binlerce yolcuya unutulmaz deneyimler sunuyor.</p>
+      </div>
+
+      <div class="faq" id="faq">
+        <h2>Sık Sorulan Sorular</h2>
+        <ul>
+          <li><strong>Tur iptali durumunda ne olur?</strong> 7 gün öncesine kadar iptal ücretsizdir.</li>
+          <li><strong>Yurt dışı turlar var mı?</strong> Evet, Avrupa ve Orta Doğu turlarımız mevcuttur.</li>
+        </ul>
+      </div>
+
+      <div class="contact" id="contact">
+        <h2>İletişim</h2>
+        <p><strong>Telefon:</strong> +90 212 123 45 67</p>
+        <p><strong>Email:</strong> info@hayalturizm.com</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Hayal Turizm. Tüm hakları saklıdır.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    window.onload = function () {
+      document.querySelector('.content').classList.add('show');
+      document.querySelector('.sidebar').classList.add('show');
+    };
+  </script>
+
+</body>
+
+</html>
